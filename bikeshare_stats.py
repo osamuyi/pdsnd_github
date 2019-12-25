@@ -34,7 +34,7 @@ def get_filters():
 
     while True:
 
-        # Enter input from user for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+        # Get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
         if not city_found:
             city = input("There are 3 cities for exploration : Chicago, Washington, New York City. Please choose "
                          "one : ")
@@ -47,7 +47,7 @@ def get_filters():
 
         print('\n')
 
-        # Enter input from user for month (all, january, february, ... , june)
+        # Get user input for month (all, january, february, ... , june)
         if not month_found:
             month = input("Choose the month you want to explore : "
                           "JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, ALL : ")
@@ -60,7 +60,7 @@ def get_filters():
 
         print('\n')
 
-        # Enter input from user for day of week (all, monday, tuesday, ... sunday)
+        # Get user input for day of week (all, monday, tuesday, ... sunday)
         day = input("Choose the day you want to explore : MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY, ALL: ")
         day = day.upper()
         if day not in DAY_DICT:
