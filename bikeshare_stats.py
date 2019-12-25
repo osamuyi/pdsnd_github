@@ -73,7 +73,6 @@ def get_filters():
     print('\n')
     return city, month, day
 
-
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
@@ -110,14 +109,13 @@ def load_data(city, month, day):
     print("\nThis took %s seconds." % (time.time() - start_time))
     return df
 
-
 def time_stats(df, month, day):
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # display the most common month
+    # show the most common month
     if month == MONTHS_DICT.get('ALL'):
         common_month = df['Start Month'].dropna()
         if common_month.empty:
@@ -128,7 +126,7 @@ def time_stats(df, month, day):
     else:
         print('As you have chosen month : {} as filter, most common month for renting won\'t be calculated'.format(month))
 
-    # display the most common day of week
+    # show the most common day of week
     if day == DAY_DICT.get('ALL'):
         common_day = df['Start Day'].dropna()  #.mode()[0]
         if common_day.empty:
@@ -139,7 +137,7 @@ def time_stats(df, month, day):
     else:
         print('As you have chosen "{}day" as filter, most common day for renting won\'t be calculated'.format(day.title()))
 
-    # display the most common start hour
+    # show the most common start hour
     common_start_hour = df['Start Hour'].dropna()
     if common_start_hour.empty:
         print('No common start hour found for the filter chosen!! Please adjust your filter !!!')
@@ -150,14 +148,13 @@ def time_stats(df, month, day):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
 
-
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # display most commonly used start station
+    # show most commonly used start station
     most_common_start_station = df['Start Station']
     if most_common_start_station.empty:
         print('No \'Start Station\' data found for the filter chosen!! Kindly adjust your filter')
@@ -165,7 +162,7 @@ def station_stats(df):
         most_common_start_station = most_common_start_station.mode()[0]
         print('Most common start station for the filter chosen is : {}'.format(most_common_start_station))
 
-    # display most commonly used end station
+    # show most commonly used end station
     most_common_end_station = df['End Station']
     if most_common_end_station.empty:
         print('No \'End Station\' data found for the filter chosen!! Kindly adjust your filter')
@@ -173,7 +170,7 @@ def station_stats(df):
         most_common_end_station = most_common_end_station.mode()[0]
         print('Most common end station for the filter chosen is : {}'.format(most_common_end_station))
 
-    # display most frequent combination of start station and end station trip
+    # show most frequent combination of start station and end station trip
     most_common_start_and_end_station = df[['Start Station', 'End Station']].dropna()
     if most_common_start_and_end_station.empty:
         print('No data found for the filter chosen!! Kindly adjust your filter')
@@ -195,7 +192,7 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # display total travel time
+    # show total travel time
     valid_time = df['Trip Duration'].dropna()
     if valid_time.empty:
         print('No data found!! Please adjust your filter')
@@ -203,12 +200,11 @@ def trip_duration_stats(df):
         total_time = valid_time.sum()
         print('Total travel time in seconds is : {}'.format(total_time))
 
-        # display mean travel time
+        # show mean travel time
         mean_travel_time = valid_time.mean()
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
-
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
@@ -216,7 +212,7 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # Display counts of user types
+    # show counts of user types
     user_type = df['User Type'].dropna()
 
     if user_type.empty:
@@ -225,7 +221,7 @@ def user_stats(df):
         user_type = user_type.value_counts()
         print('User type details for the filter chosen : {}'.format(user_type))
 
-    # Display counts of gender
+    # show counts of gender
         if 'Gender' in df:
             user_gender = df['Gender'].dropna()
             if user_gender.empty:
@@ -234,7 +230,7 @@ def user_stats(df):
                 user_gender = user_gender.value_counts()
                 print('User gender count : {}'.format(user_gender))
 
-    # Display earliest, most recent, and most common year of birth
+    # show earliest, most recent, and most common year of birth
     if 'Birth Year' in df:
         birth_years = df['Birth Year'].dropna()
         if birth_years.empty:
@@ -292,7 +288,6 @@ def main():
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-
 
 if __name__ == "__main__":
     main()
